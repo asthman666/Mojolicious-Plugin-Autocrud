@@ -11,7 +11,7 @@ sub register {
     $app->log(Mojo::Log->new);
 
     $app->helper(
-        mysql => sub { Mojo::mysql->new('mysql://' . $conf->{db_user} . ':' . $conf->{db_password} . '@localhost/ptt')->options({mysql_enable_utf8 => 1}) }
+        mysql => sub { Mojo::mysql->new('mysql://' . $conf->{db_user} . ':' . $conf->{db_password} . '@' . ($conf->{db_host}||'localhost') . '/' . $conf->{db_name})->options({mysql_enable_utf8 => 1}) }
         );
 
     my $base = catdir(dirname(__FILE__), 'Autocrud');
