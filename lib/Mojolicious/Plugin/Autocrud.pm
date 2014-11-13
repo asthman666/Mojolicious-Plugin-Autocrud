@@ -9,6 +9,7 @@ sub register {
     
     $app->plugin('DefaultHelpers');
     $app->log(Mojo::Log->new);
+    $app->config($conf->{display});
 
     $app->helper(
         mysql => sub { Mojo::mysql->new('mysql://' . $conf->{db_user} . ':' . $conf->{db_password} . '@' . ($conf->{db_host}||'localhost') . '/' . $conf->{db_name})->options({mysql_enable_utf8 => 1}) }

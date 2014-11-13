@@ -26,7 +26,7 @@
 <table id="events-table" data-url="<%= $c->req->url->path %>/read.json" data-toggle="table" data-sort-name="<%= $default_sort_field %>" data-sort-order="<%= $default_sort_order %>" data-side-pagination="server" data-pagination="true" data-page-list="[10, 50, 100]" data-search="true" data-toolbar="#custom-toolbar">
         <thead>
             <tr>
-                % for (@$db_fields ) {
+                % for (@$db_list_display_fields ) {
                 % my $label = join(" ", map {lc $_ eq 'id' ? 'ID' : $_} split(/_/, ucfirst($_)));
                 <th data-field="<%= $_ %>" data-sortable="true"><%= $label %></th>
                 % }

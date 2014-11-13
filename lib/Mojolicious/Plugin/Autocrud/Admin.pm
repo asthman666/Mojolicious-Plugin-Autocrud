@@ -17,9 +17,10 @@ sub read {
   }
   
   $self->stash->{template} = "admin/read";
-
+  
   $self->render(
       table                   => $table,
+      db_list_display_fields  => $self->config->{$table}->{db_list_display_fields} || $db_fields,
       db_fields               => $db_fields,
       no_insert_db_fields     => ['active', 'dt_created', 'dt_updated'],
       delete_key_db_fields    => $delete_key_db_fields,
